@@ -1,0 +1,14 @@
+{
+	"ImportPath": "github.com/xoom/branchlock",
+	"GoVersion": "go1.4.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/ae6rt/retry",
+			"Rev": "2267ae96e539a79c4db9c0191d3087a9f3397358"
+		},
+		{
+			"ImportPath": "github.com/xoom/stash",
+			"Rev": "acb86383232321f061e62c20a03ce5b1cb879912"
+		}
+	]
+}
