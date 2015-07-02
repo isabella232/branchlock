@@ -1,1 +1,6 @@
 branchlock
+branchlock-*.x86_64.rpm
+branchlock-darwin-amd64
+branchlock-linux-amd64
+branchlock-windows-amd64.exe
+branchlock_*_amd64.deb
