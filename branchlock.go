@@ -51,7 +51,11 @@ func main() {
 	client := stash.NewClient(*userName, *password, u)
 
 	if *lock {
-				client.CreateBranchRestriction(*project, *slug, *branch, *permittedUser)
+		// Should it check if branch exists?  Stash will happily create a restriction on a branch that doesn't exist with no error.
+		_, err := client.CreateBranchRestriction(*project, *slug, *branch, *permittedUser)
+		if err != nil {
+			Log.Fatalf("%v\n", err)
+		}
 	} else {
 		branchRestrictions, err := client.GetBranchRestrictions(*project, *slug)
 		if err != nil {
@@ -60,9 +64,11 @@ func main() {
 
 		for _, branchRestriction := range branchRestrictions.BranchRestriction {
 			if branchRestriction.Branch.ID == *branch {
-				client.DeleteBranchRestriction(*project, *slug, branchRestriction.Id)
+				err := client.DeleteBranchRestriction(*project, *slug, branchRestriction.Id)
+				if err != nil {
+					Log.Fatalf("%v\n", err)
+				}
 			}
 		}
-
 	}
 }
